@@ -20,8 +20,8 @@ export function renderNavbar() {
             <div class="theme-toggle__knob" id="theme-icon">${icon}</div>
           </div>
           ${loggedIn ? `
-            <a href="#/editor" class="btn btn--ghost"><i class="ph-duotone ph-pencil-simple"></i> Редактор</a>
-            <button class="btn btn--ghost" id="logout-btn"><i class="ph-duotone ph-sign-out"></i> Выйти</button>
+            <a href="#/editor" class="btn btn--ghost" title="Редактор"><i class="ph-duotone ph-pencil-simple"></i><span class="desktop-only">Редактор</span></a>
+            <button class="btn btn--ghost" id="logout-btn" title="Выйти"><i class="ph-duotone ph-sign-out"></i><span class="desktop-only">Выйти</span></button>
           ` : `
             <a href="#/login" class="btn btn--primary">Войти</a>
           `}

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cardly-v8';
+const CACHE_NAME = 'cardly-v10';
 const STATIC_ASSETS = [
   '/',
   '/manifest.json',

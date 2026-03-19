@@ -83,12 +83,18 @@ export function renderEditor(app) {
 
     app.innerHTML = `
       ${renderNavbar()}
+      <div class="top-header">
+        <div class="container">
+          <h2><i class="ph-duotone ph-pencil-simple" style="color: var(--accent);"></i> Редактор визитки</h2>
+        </div>
+      </div>
       <div class="container editor">
-        <h2 style="margin-bottom:var(--space-lg);"><i class="ph-duotone ph-pencil-simple" style="color: var(--accent);"></i> Редактор визитки</h2>
-
         ${card.username ? `
-          <div class="editor__preview-link">
-            <i class="ph-duotone ph-link" style="color: var(--accent-light);"></i> Ваша визитка: <a href="#/card/${card.username}" target="_blank">${location.origin}/#/card/${card.username}</a>
+          <div class="editor__preview-link" style="align-items: flex-start; flex-direction: column; gap: 4px;">
+            <div style="display:flex; align-items:center; gap:var(--space-sm)">
+              <i class="ph-duotone ph-link" style="color: var(--accent-light);"></i> <span>Ваша визитка:</span>
+            </div>
+            <a href="#/card/${card.username}" target="_blank" style="padding-left: 28px;">${location.origin}/#/card/${card.username}</a>
           </div>
         ` : ''}
 
