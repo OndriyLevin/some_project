@@ -90,11 +90,11 @@ export function renderEditor(app) {
       </div>
       <div class="container editor">
         ${card.username ? `
-          <div class="editor__preview-link" style="align-items: flex-start; flex-direction: column; gap: 4px;">
+          <div class="editor__preview-link" style="align-items: flex-start; flex-direction: column; gap: 8px;">
             <div style="display:flex; align-items:center; gap:var(--space-sm)">
               <i class="ph-duotone ph-link" style="color: var(--accent-light);"></i> <span>Ваша визитка:</span>
             </div>
-            <a href="#/card/${card.username}" target="_blank" style="padding-left: 28px;">${location.origin}/#/card/${card.username}</a>
+            <a href="#/card/${card.username}" target="_blank" style="word-break: break-all;">${location.origin}/#/card/${card.username}</a>
           </div>
         ` : ''}
 

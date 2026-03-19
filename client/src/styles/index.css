@@ -1011,11 +1011,27 @@ textarea.form-input { resize: vertical; min-height: 80px; }
 /* --- Responsive --- */
 @media (max-width: 600px) {
   :root {
-    --content-padding: 24px;
+    --content-padding: 16px;
   }
 
   #app {
     padding-top: 0;
+  }
+
+  .editor__section {
+    padding: var(--space-md);
+  }
+
+  .editor__section, .editor__preview-link {
+    margin-left: var(--space-md);
+    margin-right: var(--space-md);
+  }
+
+  .profile-edit-grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    gap: var(--space-md);
   }
 
   .top-header {
