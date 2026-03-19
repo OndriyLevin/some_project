@@ -997,8 +997,12 @@ textarea.form-input { resize: vertical; min-height: 80px; }
     --content-padding: 16px;
   }
 
+  #app {
+    padding-top: calc(var(--space-md) + env(safe-area-inset-top));
+  }
+
   body {
-    padding-bottom: calc(80px + env(safe-area-inset-bottom));
+    padding-bottom: calc(85px + env(safe-area-inset-bottom));
   }
 
   .navbar {
@@ -1007,9 +1011,27 @@ textarea.form-input { resize: vertical; min-height: 80px; }
     bottom: 0;
     left: 0;
     right: 0;
-    padding-top: var(--space-sm);
+    padding-top: 0;
     padding-bottom: calc(var(--space-md) + env(safe-area-inset-bottom));
     background: transparent;
+    border: none;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    pointer-events: none;
+  }
+
+  .navbar__inner {
+    pointer-events: auto;
+    margin-left: var(--space-md);
+    margin-right: var(--space-md);
+    padding: 10px var(--space-md);
+    background: var(--bg-glass-strong);
+    border-radius: 100px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    border: 1px solid var(--border-glass);
+    backdrop-filter: blur(40px) saturate(180%);
+    -webkit-backdrop-filter: blur(40px) saturate(180%);
   }
 
   .social-grid { grid-template-columns: 1fr; }
@@ -1018,10 +1040,4 @@ textarea.form-input { resize: vertical; min-height: 80px; }
 
   .toast-container { left: var(--space-md); right: var(--space-md); }
   .toast { max-width: 100%; }
-
-  .navbar__inner {
-    margin-left: var(--space-sm);
-    margin-right: var(--space-sm);
-    padding: var(--space-sm) var(--space-md);
-  }
 }
