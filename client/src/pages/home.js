@@ -62,4 +62,28 @@ export function renderHome(app) {
   `;
 
   attachNavbarEvents();
+
+  // Auto-scroll mobile carousel
+  setTimeout(() => {
+    const features = document.querySelector('.features');
+    if (!features || window.innerWidth > 600) return;
+
+    let currentIndex = 0;
+    const cards = features.querySelectorAll('.feature-card');
+    
+    const interval = setInterval(() => {
+      if (!document.querySelector('.features')) {
+        clearInterval(interval);
+        return;
+      }
+      const cardWidth = cards[0].offsetWidth + parseInt(getComputedStyle(features).gap || 16);
+      currentIndex++;
+      if (currentIndex >= cards.length) {
+        currentIndex = 0;
+      }
+      features.scrollTo({ left: currentIndex * cardWidth, behavior: 'smooth' });
+    }, 3500);
+
+    features.addEventListener('touchstart', () => clearInterval(interval), { passive: true });
+  }, 100);
 }

@@ -717,6 +717,11 @@ textarea.form-input { resize: vertical; min-height: 80px; }
 .hero {
   text-align: center;
   padding: var(--space-3xl) 0 var(--space-2xl);
+  min-height: calc(100vh - 160px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .hero__title {
@@ -1057,7 +1062,16 @@ textarea.form-input { resize: vertical; min-height: 80px; }
 
   .social-grid { grid-template-columns: 1fr; }
   .hero__title { font-size: 1.8rem; }
-  .features { grid-template-columns: 1fr; }
+  .features { 
+    display: flex; 
+    overflow-x: auto; 
+    scroll-snap-type: x mandatory; 
+    padding-bottom: var(--space-md); 
+    gap: var(--space-md); 
+    scrollbar-width: none; 
+  }
+  .features::-webkit-scrollbar { display: none; }
+  .feature-card { min-width: 85vw; scroll-snap-align: center; }
 
   .toast-container { left: var(--space-md); right: var(--space-md); }
   .toast { max-width: 100%; }
