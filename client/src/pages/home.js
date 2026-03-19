@@ -63,13 +63,17 @@ export function renderHome(app) {
 
   attachNavbarEvents();
 
-  // Auto-scroll mobile carousel
+  // Auto-scroll infinite mobile carousel
   setTimeout(() => {
     const features = document.querySelector('.features');
     if (!features || window.innerWidth > 600) return;
 
-    let currentIndex = 0;
+    // Clone cards to allow seamless infinite loop
+    const originalCount = features.children.length;
+    features.innerHTML += features.innerHTML; 
+    
     const cards = features.querySelectorAll('.feature-card');
+    let currentIndex = 0;
     
     const interval = setInterval(() => {
       if (!document.querySelector('.features')) {
@@ -78,10 +82,25 @@ export function renderHome(app) {
       }
       const cardWidth = cards[0].offsetWidth + parseInt(getComputedStyle(features).gap || 16);
       currentIndex++;
-      if (currentIndex >= cards.length) {
-        currentIndex = 0;
-      }
+      
+      // Smooth scroll to next card
       features.scrollTo({ left: currentIndex * cardWidth, behavior: 'smooth' });
+
+      // If we hit the first cloned card (looks identical to the real first card),
+      // jump back to the real first card silently after the animation finishes.
+      if (currentIndex === originalCount) {
+        setTimeout(() => {
+          if (!document.querySelector('.features')) return;
+          features.style.scrollSnapType = 'none'; // Temporarily disable snapping to avoid visual glitch
+          currentIndex = 0;
+          features.scrollTo({ left: 0, behavior: 'instant' });
+          
+          // Re-enable snapping
+          requestAnimationFrame(() => {
+            features.style.scrollSnapType = 'x mandatory';
+          });
+        }, 600); // 600ms buffer for the scroll animation to finish
+      }
     }, 3500);
 
     features.addEventListener('touchstart', () => clearInterval(interval), { passive: true });
