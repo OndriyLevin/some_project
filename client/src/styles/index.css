@@ -1088,6 +1088,10 @@ textarea.form-input { resize: vertical; min-height: 80px; }
     padding-bottom: var(--space-md); 
     gap: var(--space-md); 
     scrollbar-width: none; 
+    margin-left: calc(-1 * (var(--content-padding) + env(safe-area-inset-left)));
+    margin-right: calc(-1 * (var(--content-padding) + env(safe-area-inset-right)));
+    padding-left: calc(var(--content-padding) + env(safe-area-inset-left));
+    padding-right: calc(var(--content-padding) + env(safe-area-inset-right));
   }
   .features::-webkit-scrollbar { display: none; }
   .feature-card { min-width: 85vw; scroll-snap-align: center; }
